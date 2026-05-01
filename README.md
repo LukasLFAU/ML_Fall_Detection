@@ -14,9 +14,11 @@ We collect our own dataset using smartphone sensors via the Sensor Logger app. T
 - Normal daily activities (e.g., walking, sitting)
 
 ## 🧠 Methodology
-The project follows the CRISP-DM process:
+The project follows the CRISP-DM process. For this course, the standard process is extended by a Related Work phase, which is placed between Data Understanding and Data Preparation:
+
 1. Business Understanding
 2. Data Understanding
+3. Related Work
 3. Data Preparation
 4. Modeling
 5. Evaluation
