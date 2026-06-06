@@ -144,7 +144,8 @@ def load_sensor_recording(zip_path: str | Path) -> Dict[str, pd.DataFrame]:
 def infer_metadata_from_path(zip_path: str | Path, raw_data_dir: str | Path = "data/raw") -> dict:
     """
     Infers metadata from the folder path and file name.
-
+    We do this because our folder structure already contains useful labels.
+    
     Example path:
         data/raw/fall_backward/lukas/Fall_Backward_Lukas1.zip
 
@@ -160,6 +161,9 @@ def infer_metadata_from_path(zip_path: str | Path, raw_data_dir: str | Path = "d
         label = non_fall
         subtype = walking
         person = polina
+
+    This metadata is later important for preprocessing, feature engineering,
+    train/test splits and evaluation.
     """
     zip_path = Path(zip_path)
     raw_data_dir = Path(raw_data_dir)
@@ -211,6 +215,9 @@ def extract_recording_number(recording_id: str) -> int | None:
     Examples:
         Fall_Backward_Lukas1 -> 1
         NFA_Walking_Polina12 -> 12
+
+    This is not essential for the model, but it helps us keep recordings ordered
+    and check whether files are missing.
     """
     match = re.search(r"(\d+)$", recording_id)
 
@@ -221,12 +228,16 @@ def extract_recording_number(recording_id: str) -> int | None:
 
 
 def build_recording_index(raw_data_dir: str | Path = "data/raw") -> pd.DataFrame:
+    
     """
     Creates a metadata overview for all raw ZIP recordings.
 
-    This does not load all sensor values. It only scans the folder structure
-    and returns one row per recording.
+    Important:
+    This function does not load all sensor values. It only scans the folder
+    structure and creates one row per recording. This makes it fast and useful
+    for checking whether our raw dataset is complete and correctly organized.
     """
+
     zip_files = list_raw_recordings(raw_data_dir)
 
     rows = [
