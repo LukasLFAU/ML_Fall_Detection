@@ -3,3 +3,8 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .DS_Store
+# Generated preprocessing intermediate outputs
+data/processed/trimmed_by_sensor/
+data/processed/qc_plots/
+data/processed/combined/*_combined_trimmed.csv
+!data/processed/combined/all_recordings_combined_trimmed.csv
