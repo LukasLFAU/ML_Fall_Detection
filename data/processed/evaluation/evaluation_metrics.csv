@@ -1,0 +1,4 @@
+evaluation_key,evaluation_title,accuracy,precision_fall,recall_fall,f1_fall,test_rows,train_rows,train_person,test_person
+random_split,Evaluation 1: Random recording-level split,1.0,1.0,1.0,1.0,61,142,mixed,mixed
+lukas_to_polina,"Evaluation 2: Train on lukas, test on polina",0.7281553398058253,0.9,0.4090909090909091,0.5625,103,100,lukas,polina
+polina_to_lukas,"Evaluation 3: Train on polina, test on lukas",0.78,0.65,0.975,0.78,100,103,polina,lukas
